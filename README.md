@@ -29,20 +29,29 @@ trust  D8:80:39:F4:1D:EA
 connect  D8:80:39:F4:1D:EA
 
 With the first pairing, it will report a lot of information about the device services, characteristics and descriptors. (Also we can get this information with command: list-attributes D8:80:39:F4:1D:EA )
+
 After that, you need to find Service with UUID: 49535343-fe7d-4ae5-8fa9-9fafd205e455. There will be Characteristic with UUID:  49535343-1e4d-4bd9-ba61-23c647249616, which contains flags: indicate, notify, write, write no response.
 It has been listed as:
 
 Primary Service
+
     /org/bluez/hci0/dev_D8_80_39_F4_1D_EA/service0050
+    
     49535343-fe7d-4ae5-8fa9-9fafd205e455
+    
     Vendor specific
 
 Characteristic
+
     /org/bluez/hci0/dev_D8_80_39_F4_1D_EA/service0050/char0051
+    
     49535343-1e4d-4bd9-ba61-23c647249616
+    
     Vendor specific
 
+
 You can select the attribute with command:
+
 select-attribute /org/bluez/hci0/dev_D8_80_39_F4_1D_EA/service0050/char0051
 
 attribute-info (You get attribute information)
