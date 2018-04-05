@@ -56,6 +56,8 @@ select-attribute /org/bluez/hci0/dev_D8_80_39_F4_1D_EA/service0050/char0051
 
 attribute-info (You get attribute information)
 
+(Make sure that the Serial Monitor window (separate pop-up window that acts as a separate terminal that communicates by receiving and sending Serial Data) is't closed .)
+
 notify on
 
 And then you will get the data.
