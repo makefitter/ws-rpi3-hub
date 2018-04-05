@@ -5,16 +5,27 @@ Hub implementation using rpi3
 For debugging of the connection between the raspberry and armband, you may try to run the following commands in the terminal:
 
 sudo apt-get install bluetooth bluez blueman (in this case version 5.43)
+
 sudo reboot 
+
 (Before trying to connect to the armband, make sure you are not already connected to mobile phone.)
+
 sudo bluetoothctl 
+
 agent on
+
 defaul-agent
+
 power on
+
 discoverable on
+
 scan on (after a while, it should show the WS-INO-1DEA)
+
 pair D8:80:39:F4:1D:EA
+
 trust  D8:80:39:F4:1D:EA
+
 connect  D8:80:39:F4:1D:EA
 
 With the first pairing, it will report a lot of information about the device services, characteristics and descriptors. (Also we can get this information with command: list-attributes D8:80:39:F4:1D:EA )
