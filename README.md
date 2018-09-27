@@ -1,14 +1,13 @@
 # ws-rpi3-hub
-Hub implementation using rpi3
+
+## Python implementation of BLE communication with sensor
 
 Install necessary applications:
-
+'''
 sudo apt-get update
-
 sudo apt-get install bluetooth bluez blueman (in this case version 5.43)
-
 sudo reboot
-
+'''
 
 For debugging of the connection between the raspberry and armband, you may try to run the following commands in the terminal:
 
