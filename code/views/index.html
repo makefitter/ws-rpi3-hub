@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+input[type=number],
+
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+/* The container */
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+
+/* Hide the browser's default radio button */
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+
+
+/* Create a custom radio button */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #aaa;
+    border-radius: 50%;
+}
+
+
+
+
+/* On mouse-over, add a grey background color */
+
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+
+
+
+/* When the radio button is checked, add a blue background */
+
+.container input:checked~.checkmark {
+    background-color: #45a049;
+}
+
+
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+
+
+/* Show the indicator (dot/circle) when checked */
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+
+
+
+/* Style the indicator (dot/circle) */
+
+.container .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+</style>
+
+<body>
+    <div>
+        <h2>Metadata form</h2>
+        <form method="POST" action="/form-submit" target="_blank">
+            Age:
+            <br>
+            <input type="number" min="0" max="120" width="100" name="age">
+            <br> Height (cm):
+            <br>
+            <input type="number" min="10" max="300" name="height">
+            <br> Weight (kg):
+            <br>
+            <input type="number" name="weight" min="5" max="600">
+            <br> Gender:
+            <br>
+            <br>
+            <label class="container">
+                <input type="radio" name="gender" value="male" checked> male
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="radio" name="gender" value="female"> female
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="radio" name="gender" value="other"> other
+                <span class="checkmark"></span>
+            </label>
+            <br> Context:
+            <br>
+            <select name="context">
+                <option value="basket_ballH_1H_regular">Basketball-B. Handling-One Hand-Regular</option>
+                <option value="basket_ballH_1H_lr">Basketball-B. Handling-One Hand-Left Right</option>
+                <option value="basket_ballH_1H_fb">Basketball-B. Handling-One Hand-Forward Backward</option>
+                <option value="basket_ballH_1H_io">Basketball-B. Handling-One Hand-In Out</option>
+                <option value="basket_ballH_1H_ft">Basketball-B. Handling-One Hand-Fingertip</option>
+                <option value="basket_ballH_1H_spin">Basketball-B. Handling-One Hand-spin</option>
+                <option value="basket_ballH_1H_dribblerun">Basketball-B. Handling-One Hand-Dribble Run</option>
+            </select>
+            <br> Additional notes:
+            <br>
+            <textarea name="notes" cols="40" rows="5"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+        <p>If you click the "Submit" button, the form-data will be sent to a page called "/form-submit".</p>
+    </div>
+</body>
+
+</html>
