@@ -41,4 +41,4 @@ attribute-info (You get attribute information)
 notify on
 ```
 
-And then you will get the data.
+And then you will get the data...
