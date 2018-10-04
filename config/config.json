@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "inovatink",
+    "password": "inovatink",
+    "database": "ws_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "inovatink",
+    "password": "inovatink",
+    "database": "wshubdb",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "username": "inovatink",
+    "password": "inovatink",
+    "database": "wshubdb",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

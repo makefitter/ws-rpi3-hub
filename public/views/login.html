@@ -1,0 +1,25 @@
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class=" col-md-4 text-center">
+            <form class="my-2" ng-submit="login($event)">
+                <div class="form-login">
+                    <h4 class="mt-2">Wearable Sensors Hub</h4>
+                    <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username"
+                        ng-model="user.username" />
+                    </br>
+                    <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password"
+                        ng-model="user.password" />
+                    <ng-show ng-show="isError">
+                        <div class="my-1 alert alert-danger">
+                            {{error}}
+                        </div>
+                    </ng-show>
+                    </br>
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
