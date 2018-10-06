@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    mode: process.env.NODE_ENV,
+    mode: 'development',
     entry: './public/app.module.js',
     output: {
         path: path.resolve(__dirname, 'public/dist'),
@@ -103,6 +103,7 @@ module.exports = {
     ],
     devServer: {
         port: 3000, // configuring port for localserver
-        contentBase: './public' // configuring from where content needs to be served
+        contentBase: './public', // configuring from where content needs to be served
+        watchContentBase: true
     }
 };

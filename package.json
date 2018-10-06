@@ -14,7 +14,7 @@
     "run:check": "babel-node app.js",
     "pretest": "npm-run-all drop migrate seed",
     "test": "set NODE_ENV=test&& mocha",
-    "start": "nodemon --exec npm-run-all lint:run run:app",
+    "start": "nodemon --exec npm-run-all lint:run build run:app",
     "preserver": "webpack",
     "server": "webpack-dev-server"
   },

@@ -21,6 +21,7 @@
     "angular-jwt": "^0.1.10",
     "a0-angular-storage": "^0.0.15",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.3"
+    "popper.js": "^1.14.3",
+    "angular-ui-router": "^1.0.20"
   }
 }
