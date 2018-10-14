@@ -25,7 +25,7 @@
     "angular-jwt": "^0.1.10",
     "angular-route": "^1.7.2",
     "angular-storage": "0.0.15",
-    "bcrypt": "^2.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
     "chai-http": "^4.0.0",
@@ -42,7 +42,7 @@
     "popper.js": "^1.14.3",
     "python-shell": "^1.0.4",
     "sequelize": "^4.38.0",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^5.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.4",

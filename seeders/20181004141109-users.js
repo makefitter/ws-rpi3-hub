@@ -1,5 +1,5 @@
 'use strict';
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 module.exports = {
     up: (queryInterface, Sequelize) => {
         const salt = bcrypt.genSaltSync();

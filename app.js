@@ -22,16 +22,15 @@ let options = {
     mode: 'text',
     encoding: 'utf8',
     /*eslint-disable-next-line*/
-    pythonPath: "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Python36_64\\python.exe",
     pythonOptions: ['-u'], // get print results in real-time
     scriptPath: './src/scripts/python',
     args: ['hello world']
 };
-// let test = new PythonShell('test.py', options);
+// let test = new PythonShell('writeToConsole.py', options);
 // test.on('message',function(message){
 // console.log(message);
 // })
-PythonShell.run('test.py', options, function (err) {
+PythonShell.run('writeToConsole.py', options, function (err) {
     if (err) throw err;
     console.log('finished');
 }).on('message', function(message){
