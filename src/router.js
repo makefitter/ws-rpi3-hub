@@ -11,4 +11,8 @@ module.exports = [{
         path: '/user',
         handler: rootRequire('src/routes/UserRoute'),
     },
+    {
+        path: '/cloud',
+        handler: rootRequire('src/routes/CloudRoute'),
+    },
 ];

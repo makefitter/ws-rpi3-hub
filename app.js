@@ -4,11 +4,17 @@ import rootRequireDef from './utils/rootRequire';
 import chalk from 'chalk';
 import middleware from './config/middleware';
 import routeHandling from './src/scripts/routeHandling';
+import pyConfig from './config/pyConfig';
+import http from 'http';
+import socket from 'socket.io';
 rootRequireDef(); //initializing function
 let Router = rootRequire('src/router');
 let app = express();
 middleware(app, express);
 routeHandling(app, Router);
+
+var server = http.createServer(app);  
+var io = socket(server);
 
 /****ESLint Config****/
 /*eslint no-undef: "off"*/
@@ -18,19 +24,12 @@ import {
 } from 'python-shell';
 
 
-let options = {
-    mode: 'text',
-    encoding: 'utf8',
-    /*eslint-disable-next-line*/
-    pythonOptions: ['-u'], // get print results in real-time
-    scriptPath: './src/scripts/python',
-    args: ['hello world']
-};
+let options = pyConfig;
 // let test = new PythonShell('writeToConsole.py', options);
 // test.on('message',function(message){
 // console.log(message);
 // })
-PythonShell.run('writeToConsole.py', options, function (err) {
+PythonShell.run('test.py', options, function (err) {
     if (err) throw err;
     console.log('finished');
 }).on('message', function(message){

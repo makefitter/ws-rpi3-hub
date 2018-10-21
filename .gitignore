@@ -3,4 +3,5 @@ node_modules/
 /.vscode
 public/lib/
 public/dist/
-client/node_modules
+public/node_modules/
+public/npm-debug.log*

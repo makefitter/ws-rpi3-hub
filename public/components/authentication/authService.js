@@ -18,6 +18,9 @@ class AuthService {
     setToken(token) {
         store.set('jwt', token);
     };
+    test() {
+        return 'success';
+    }
 
 }
 export default ['store', 'jwtHelper', AuthService];
