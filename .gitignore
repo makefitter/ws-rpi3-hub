@@ -4,4 +4,4 @@ node_modules/
 public/lib/
 public/dist/
 public/node_modules/
-public/npm-debug.log*
+src/log/*

@@ -1,0 +1,68 @@
+<div class="jumbotron  vertical-center">
+    <div class="container-fluid">
+        <div>
+            <h2>{{ $ctrl.welcome }}</h2>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click = $ctrl.startData()>Start collecting data</button>
+        <div><label >{{$ctrl.status}}</label></div>
+        <div class="row-fluid">
+            <div class="centering text-center">
+                <h2 class="display-4">Incoming data:</h2>
+            </div>
+            <hr size="30">
+
+        </div>
+
+        <div ng-if="$ctrl.status" class="row-fluid">
+
+            <div class=" col-md-offset-3 col-md-2">
+                <h3>
+                    <label>Acc_x:</label>
+                    {{$ctrl.acc.x}}
+                </h3>
+                <h3>
+                    <label>Acc_y:</label>
+                    {{$ctrl.acc.y}}
+                </h3>
+                <h3>
+                    <label>Acc_z:</label>
+                    {{$ctrl.acc.z}}
+                </h3>
+            </div>
+
+            <div class="col-md-2">
+                <h3>
+                    <label>Gyro_x:</label>
+                    {{$ctrl.gyro.x}}
+                </h3>
+                <h3>
+                    <label>Gyro_y:</label>
+                    {{$ctrl.gyro.y}}
+                </h3>
+                <h3>
+                    <label>Gyro_z:</label>
+                    {{$ctrl.gyro.z}}
+                </h3>
+            </div>
+
+            <div class="col-md-2">
+                <h3>
+                    <label>Quat_w:</label>
+                    {{$ctrl.quat.w}}
+                </h3>
+                <h3>
+                    <label>Quat_x:</label>
+                    {{$ctrl.quat.x}}
+                </h3>
+                <h3>
+                    <label>Quat_y</label>
+                    {{$ctrl.quat.y}}
+                </h3>
+                <h3>
+                    <label>Quat_z</label>
+                    {{$ctrl.quat.z}}
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
