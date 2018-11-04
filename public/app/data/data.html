@@ -1,10 +1,11 @@
 <div class="jumbotron  vertical-center">
     <div class="container-fluid">
-        <div>
-            <h2>{{ $ctrl.welcome }}</h2>
-        </div>
-        <button type="button" class="btn btn-primary" ng-click = $ctrl.startData()>Start collecting data</button>
-        <div><label >{{$ctrl.status}}</label></div>
+        <div><label>{{$ctrl.status}}</label></div>
+        <!--
+        <button type="button" class="btn btn-primary" ng-click=$ctrl.startData()>Start collecting data</button>
+        -->
+        <button type="button" class="btn btn-success" ng-click=$ctrl.connectWs()>connectWs</button>
+        <button ng-if=$ctrl.isConnected type="button" class="btn btn-warning" ng-click=$ctrl.disconnectWs()>disconnectWs</button>
         <div class="row-fluid">
             <div class="centering text-center">
                 <h2 class="display-4">Incoming data:</h2>
@@ -13,7 +14,7 @@
 
         </div>
 
-        <div ng-if="$ctrl.status" class="row-fluid">
+        <div ng-if="$ctrl.isConnected" class="row-fluid">
 
             <div class=" col-md-offset-3 col-md-2">
                 <h3>

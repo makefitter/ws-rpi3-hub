@@ -31,6 +31,9 @@ module.exports = {
       additionalNotes: {
         type: Sequelize.STRING
       },
+      fileName: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

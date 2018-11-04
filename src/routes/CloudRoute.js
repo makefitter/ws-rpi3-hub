@@ -10,7 +10,8 @@ let Controller = require('../controllers/Cloud/CloudController');
 let router = express.Router();
 
 router.post('/', Controller.create.post);
-//router.get('/', Controller.all.get);
-router.get('/', Controller.read.get);
+router.put('/', Controller.connectWs.put);
+router.get('/', Controller.disconnectWs.get);
+
 
 module.exports = router;

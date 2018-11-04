@@ -21,8 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     age: DataTypes.INTEGER,
     height: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
-    additionalNotes: DataTypes.STRING
-  }, {});
+    additionalNotes: DataTypes.STRING,
+    fileName: DataTypes.STRING,
+  }, {
+    timestamps: true
+  });
   UserData.associate = function (models) {
     // associations can be defined here
   };
