@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     let response = {};
     try {
     
-        connectScript('scheduler.py',req.body.name, io);
+        connectScript('writeToConsole.py',req.body.name, io);
     } catch (err) {
         response.message = 'Script not started';
         res.status(404).json(response);

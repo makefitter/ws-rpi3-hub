@@ -4,6 +4,8 @@ const toFile = require('../../scripts/writeToFile');
 export default (scriptPath,fileName, io) => {
 
     toFile.clean('');
+// Just for RPI3 INCLUDE:
+delete pyConfig.pythonPath;
     PythonShell.run(scriptPath , pyConfig, function (err) {
 
             if (err) {
@@ -11,8 +13,14 @@ export default (scriptPath,fileName, io) => {
             }
             return true;
         }).on('message', function (message) {
-            let _json = JSON.parse(message);
+	let _json={}; 
+	try{
+            _json = JSON.parse(message);
             console.log('scriptLog:',_json);
+		}
+catch(err){
+	_json = {};
+}
            toFile.write(message,fileName);
             io.emit('message', _json);
         })

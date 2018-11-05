@@ -3,8 +3,9 @@
 import gatt
 import json
 import time
+import sys
 import paho.mqtt.client as mqtt
-
+fs = open(("../../log/" + str(sys.argv[1])),"w")
 def connectCloud(data):
     
     iot_hub = "things.inovatink.com"
@@ -15,7 +16,7 @@ def connectCloud(data):
     client = mqtt.Client()
     client.username_pw_set(username,password)
     client.connect(iot_hub,port)
-    print("Cloud - Connection success")
+    #print("Cloud - Connection success")
     data_out = json.dumps('{"test":123}')
     client.publish(topic,data_out,0)
     time.sleep(3)
@@ -56,7 +57,9 @@ def connectWs(MACaddress):
             stringData = value.decode('utf-8').rstrip()
             out = json.loads( stringData) 
             print(stringData)
+            fs.write(stringData +'\n')
             connectCloud(out)
+            fs.flush()
     print("Connecting...")
     manager = gatt.DeviceManager(adapter_name='hci0')
     device = AnyDevice(manager=manager, mac_address=MACaddress)
