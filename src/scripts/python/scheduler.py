@@ -1,7 +1,9 @@
 import time
 import random
 import json
+import sys
 # starttime=time.time()
+fs = open(("./log/" + str(sys.argv[1]) + ".log"),'w')
 
 data = {
   "acc_x":round(random.uniform(0,2),3),
@@ -28,9 +30,13 @@ while True:
   data['quat_y'] = round(random.uniform(0,2),3)
   data['quat_z'] = round(random.uniform(0,2),3)
   data['quat_w'] = round(random.uniform(0,2),3)
-  if i > 5 :
+  if i > 10 :
+    print("kraj")
+    fs.close()
     break
   i+=1
+
   print (json.dumps(data))
+  fs.write(json.dumps(data) + "\n")
   time.sleep(1)
   

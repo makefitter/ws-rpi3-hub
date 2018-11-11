@@ -1,15 +1,10 @@
-import { UserService } from "../services/user.services";
 
 class HomeController implements ng.IController {
     
-    static $inject = ['userService','$state'];
+    static $inject = [];
     welcome: string = 'hello ng';
     users: any;
-    constructor(public home: UserService, public $state: ng.ui.IStateService) {
-        this.home.getAll().then((data) => {
-            this.users = data.data;
-        });
-    }
+    constructor(){}
 }
 
 export class HomeComponent implements ng.IComponentOptions {

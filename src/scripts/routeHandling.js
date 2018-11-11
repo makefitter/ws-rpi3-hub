@@ -6,7 +6,7 @@ module.exports = function (app, Router) {
        }
     });
     app.get('*', function (req, res) {
-        res.sendFile(constants.root + '/public/index.html');
+        res.sendFile(constants.root + '/client/index.html');
     });
     app.use("/*", function (req, res) {
         res.status(404).json({

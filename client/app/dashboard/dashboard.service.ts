@@ -1,12 +1,10 @@
-import {
-  UserData
-} from "./dashboard.component";
-
+import { UserData } from "./dashboard.component";
+import { AuthService } from "../services/authentication.service";
 export class DashboardService {
-  static $inject = ['$q', '$http', '$window'];
+  static $inject = ['$q', '$http', '$window','authService'];
   static NAME: string = 'dashboardService';
   private host: string = '';
-  constructor(protected $q: ng.IQService, protected $http: ng.IHttpService, protected $window: ng.IWindowService) {
+  constructor(protected $q: ng.IQService, protected $http: ng.IHttpService, protected $window: ng.IWindowService, private authService: AuthService) {
     this.host = $window.localStorage['api'];
   }
   // public getAll(): angular.IHttpPromise < any > {
@@ -27,10 +25,10 @@ export class DashboardService {
   //     });
   // }
   public submitData(userData: UserData): ng.IHttpPromise < any > {
-    return this.$http.post(('http://localhost:5000/api/cloud/'), userData, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    
+    userData.email = this.authService.tokenPayload().email;
+    return this.$http.post((this.$window.localStorage['api'] + 'cloud/'), userData, {
+        headers: this.authService.getHeaders()
       })
       .then((response) => {
         return response;

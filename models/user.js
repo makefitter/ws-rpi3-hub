@@ -64,10 +64,10 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true
     });
     User.associate = (models) => {
-        // User.hasMany(models.Post, {
-        //     foreignKey: 'userId',
-        //     owner: 'post'
-        // });
+        User.hasMany(models.UserData, {
+            foreignKey: 'userId',
+            owner: 'userData'
+        });
         // User.hasMany(models.Comment, {
         //     foreignKey: 'userId',
         //     owner: 'comment'
@@ -82,6 +82,7 @@ module.exports = (sequelize, DataTypes) => {
     User.beforeUpdate('HashUpdateModel', (model) => {
 
         model.password = User.hashPassword(model.password);
+        model.updatedAt = sequelize.NOW();
     });
 
     User.comparePasswords = function (password, hash, cb) {

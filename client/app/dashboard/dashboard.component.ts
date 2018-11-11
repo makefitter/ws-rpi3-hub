@@ -20,7 +20,7 @@ enum Context {
 
 }
 export class UserData {
-    public email: string;
+    public email:string;
     public age: string;
     public height: string;
     public weight: string;
@@ -51,12 +51,6 @@ class DashboardController implements ng.IController {
             }
         });
     }
-
-    // public write() {
-    //     this._dashboardService.test().then((data) => {
-    //         this.message = JSON.stringify(data.data);
-    //     });
-    // }
 }
 
 export class DashboardComponent implements ng.IComponentOptions {

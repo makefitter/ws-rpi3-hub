@@ -11,11 +11,6 @@ module.exports = {
       context: {
         type: Sequelize.STRING
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-      },
       age: {
         type: Sequelize.INTEGER
       },
@@ -33,6 +28,15 @@ module.exports = {
       },
       fileName: {
         type: Sequelize.STRING
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        allowNull: false,
+        references: {
+          model: 'User',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

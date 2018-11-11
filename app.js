@@ -17,19 +17,6 @@ routeHandling(app, Router);
 /****ESLint Config****/
 /*eslint no-undef: "off"*/
 /*eslint-env node*/
-// let options = pyConfig;
-// let test = new PythonShell('writeToConsole.py', options);
-// test.on('message',function(message){
-// console.log(message);
-// })
-
-// PythonShell.run('scheduler.py', options, function (err) {
-//     if (err) throw err;
-//     console.log('finished');
-// }).on('message', function(message){
-//     console.log(message);
-// })
-
 
 export default socket.server.listen(PORT, function () {
     //eslint-disable-next-line no-console

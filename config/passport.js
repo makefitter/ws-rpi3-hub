@@ -10,7 +10,7 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken('Authorizatio
 jwtOptions.secretOrKey = cfg.jwtSecret;
 
 let UserStrategy = new JwtStrategy(jwtOptions, (jwt_payload, done) => {
-    //console.log('payload received:', jwt_payload);
+    // console.log('payload received:', jwt_payload);
     models.User.findOne({
         where: {
             email: jwt_payload.email
