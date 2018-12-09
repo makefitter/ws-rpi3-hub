@@ -1,4 +1,3 @@
-#print("Disconnected!!!")
 #disconnect from ws and return connection status
 #input: device's MAC address (device's alias) (string), output:connection status (string)
 

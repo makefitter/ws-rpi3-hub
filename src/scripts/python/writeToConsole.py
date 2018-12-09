@@ -3,24 +3,34 @@
 import gatt
 import json
 import time
-import sys
 import paho.mqtt.client as mqtt
-fs = open(("../../log/" + str(sys.argv[1])),"w")
-def connectCloud(data):
+import sys
+from pathlib import Path
+
+#data_folder = Path("../../../log")
+#file_to_open  = data_folder / "test1.txt"
+#fs = open(file_to_open, 'w')
+p = (Path(__file__) / ".." / ".." / ".." / "..").resolve()
+file_to_open  = Path( p / "log")
+final =(file_to_open / (sys.argv[1] + ".txt")) 
+fs = open(str(final),'w')
+
+#def connectCloud(data):
     
-    iot_hub = "things.inovatink.com"
-    port = 1883
-    username = "SVGFMQcCxmIJSoMjkeYo"
-    password = ""
-    topic ="v1/devices/me/telemetry"
-    client = mqtt.Client()
-    client.username_pw_set(username,password)
-    client.connect(iot_hub,port)
+    #iot_hub = "things.inovatink.com"
+    #port = 1883
+    #username = "SVGFMQcCxmIJSoMjkeYo"
+    #password = ""
+    #topic ="v1/devices/me/telemetry"
+    #client = mqtt.Client()
+    #client.username_pw_set(username,password)
+    #client.connect(iot_hub,port)
     #print("Cloud - Connection success")
-    data_out = json.dumps('{"test":123}')
-    client.publish(topic,data_out,0)
-    time.sleep(3)
-    return True;
+    #data_test["semasema"]="semir"
+    #data_out = json.dumps('{"test":123}')
+    #client.publish(topic,data_test,0)
+    #time.sleep(3)
+#    return True;
 
 def connectWs(MACaddress):
 
@@ -55,11 +65,12 @@ def connectWs(MACaddress):
         def characteristic_value_updated(self,characteristic,value):
             
             stringData = value.decode('utf-8').rstrip()
-            out = json.loads( stringData) 
+            out = json.loads(stringData) 
             print(stringData)
-            fs.write(stringData +'\n')
-            connectCloud(out)
+            #connectCloud(out)
+            fs.write(stringData + "\n")
             fs.flush()
+            
     print("Connecting...")
     manager = gatt.DeviceManager(adapter_name='hci0')
     device = AnyDevice(manager=manager, mac_address=MACaddress)

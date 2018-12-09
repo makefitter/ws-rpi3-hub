@@ -8,7 +8,7 @@ module.exports = (req, res) => {
 
     try {
         pyConfig.args = [req.body.name];
-        PythonShell.run('disconnect.py', pyConfig, function (err) {
+        PythonShell.run('RPI_disconnect.py', pyConfig, function (err) {
                 if (err) {
                     console.log(JSON.stringify(err));
                     throw err;
