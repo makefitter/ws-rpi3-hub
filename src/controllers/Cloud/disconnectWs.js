@@ -13,7 +13,7 @@ module.exports = (req, res) => {
                     console.log(JSON.stringify(err));
                     throw err;
                 }
-            }).on('message', function (message) {
+            }).on('disconnect_message', function (message) {
                 let _json = {};
                 try {
                     _json = JSON.parse(message);

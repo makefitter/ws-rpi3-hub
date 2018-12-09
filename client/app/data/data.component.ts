@@ -79,14 +79,16 @@ class DataController implements ng.IController {
     }
     public disconnectWs(): void {
         this.dataService.disconnectWs().then((data) => {
-            console.log('disconnected:',data);
-            
-            if(data.status == 200) {
-                this.status = data.data.message;
-                this.$timeout(() => {
-                    this.$state.go('app.home');
-                }, 1000)
+            console.log('disconnected:', data);
 
+            if (data.status == 200) {
+                this.status = data.data.message;
+                this.socketService.get().on('message', (data) => {
+                    console.log('disconnected_data:', data);
+                    this.$timeout(() => {
+                        this.$state.go('app.home');
+                    }, 1000);
+                });
             }
         });
     }
