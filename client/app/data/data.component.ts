@@ -20,7 +20,7 @@ interface IMyScope extends ng.IScope {
 
 class DataController implements ng.IController {
     static i = 0;
-    static $inject = ['dataService', 'socketService', '$scope'];
+    static $inject = ['dataService', 'socketService', '$scope','$timeout','$state'];
     //  private $scope : ng.IScope;
     welcome: string = 'hello';
     public status: string = null;
@@ -29,7 +29,9 @@ class DataController implements ng.IController {
     public gyro: Coord;
     public quat: Coord;
 
-    constructor(protected dataService: DataService, public socketService: SocketService, private $scope: IMyScope) {
+    constructor(protected dataService: DataService, public socketService: SocketService, 
+                private $scope: IMyScope,private $timeout: ng.ITimeoutService,
+                private $state: ng.ui.IStateService) {
 
         this.acc = new Coord(1, 3.3, 4.4);
         this.gyro = new Coord(28, 31, 2);
@@ -81,6 +83,10 @@ class DataController implements ng.IController {
             
             if(data.status == 200) {
                 this.status = data.data.message;
+                this.$timeout(() => {
+                    this.$state.go('app.home');
+                }, 1000)
+
             }
         });
     }

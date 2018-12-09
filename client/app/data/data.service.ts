@@ -15,6 +15,7 @@ private fileName: string;
   //   return this.$http.get(('http://localhost:5000/api/cloud/'), {});
   // }
   public connectWs(fileName: string): angular.IHttpPromise < any > {
+
     return this.$http.put(('http://localhost:5000/api/cloud/'), {name:fileName}, {
       headers: {
         'Content-Type': 'application/json'
