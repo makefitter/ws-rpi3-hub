@@ -5,9 +5,16 @@ import chalk from 'chalk';
 import middleware from './config/middleware';
 import routeHandling from './src/scripts/routeHandling';
 import _socket from './src/scripts/eventBroadcaster';
-
+import pyConfig from './config/pyConfig';
+import os from 'os';
 const PORT = process.env.PORT || 3000;
 rootRequireDef(); //initializing function
+
+console.log('Process: ', os.platform());
+if(os.platform() === 'linux'){
+    delete pyConfig.pythonPath;
+}
+
 let Router = rootRequire('src/router');
 let app = express();
 let socket = _socket(app);

@@ -72,6 +72,9 @@ class DataController implements ng.IController {
                         console.log('ScriptFinished!!!');
                         this.status = 'Script finished';
                         this.isConnected = false;
+                        this.$timeout(() => {
+                            this.$state.go('app.home');
+                        }, 1000);
                     });
                 });
             }
@@ -83,11 +86,9 @@ class DataController implements ng.IController {
 
             if (data.status == 200) {
                 this.status = data.data.message;
-                this.socketService.get().on('message', (data) => {
+                this.socketService.get().on('disconnect_message', (data) => {
                     console.log('disconnected_data:', data);
-                    this.$timeout(() => {
-                        this.$state.go('app.home');
-                    }, 1000);
+                    this.status = data.message; 
                 });
             }
         });

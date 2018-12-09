@@ -13,7 +13,7 @@ module.exports = (req, res) => {
                     console.log(JSON.stringify(err));
                     throw err;
                 }
-            }).on('disconnect_message', function (message) {
+            }).on('message', function (message) {
                 let _json = {};
                 try {
                     _json = JSON.parse(message);
@@ -22,7 +22,7 @@ module.exports = (req, res) => {
                         message: message
                     };
                 }
-                io.emit('message', _json);
+                io.emit('disconnect_message', _json);
             })
             .end(function (err, code, signal) {
                 if (err) throw err;
