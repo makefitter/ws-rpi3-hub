@@ -52,9 +52,11 @@ class DataController implements ng.IController {
                 this.socketService.get().on('message', (data) => {
                     console.log('data: ', data);
                     this.$scope.$apply(() => {
-                        this.isConnected = true;
                         console.log('Data is collected!!!');
-                        this.status = 'Data is collected';
+                        if(!this.isConnected){
+                            this.status = 'Data is collected';
+                        }
+                        this.isConnected = true;
                         this.acc.x = data.acc_x;
                         this.acc.y = data.acc_y;
                         this.acc.z = data.acc_z;
