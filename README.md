@@ -1,44 +1,74 @@
-# ws-rpi3-hub
+# NodeJS-blog-example
+## **Note: Frontend - Still in progress...**
+##  **NodeJS + Express + Sequelize + PassportJS + Mocha + Chai + Bcrypt + ESlint + Babel**
+<br />
 
-## Python implementation of BLE communication with sensor
+### Project Setup:
+1. Clone repository
+2. Open ./ws-rpi3-hub
+2. npm install
+3. npm start (listening on port 5000)
+4. Open ./ws-rpi3-hub/client/
+5. npm install
+6. npm start (listening on port 3000)
 
-Install necessary applications:
-
-```
-sudo apt-get update
-sudo apt-get install bluetooth bluez blueman (in this case version 5.43)
-sudo reboot
-```
-
-For debugging of the connection between the RPI and armband, you may try to run the following commands in the terminal:
-
-```
-sudo bluetoothctl 
-agent on
-defaul-agent
-power on
-discoverable on
-scan on (after a while, it should show the WS-INO-XXXX)
-pair XX:XX:XX:XX:XX:XX
-trust XX:XX:XX:XX:XX:XX
-connect XX:XX:XX:XX:XX:XX
-```
-
-With the first pairing, it will report a lot of information about the device services, characteristics and descriptors. 
-Also we can get this information with command: 
-```
-list-attributes XX:XX:XX:XX:XX:XX.
-```
-
-After that, you need to find Service with UUID: 49535343-fe7d-4ae5-8fa9-9fafd205e455. 
-There will be Characteristic with UUID:  49535343-1e4d-4bd9-ba61-23c647249616, which contains flags: indicate, notify, write, write no response.
-
-You can select the attribute with command:
+- Note: Sequelize CLI needs to be installed globally (Sequelize CLI [Node: 8.10.0, CLI: 3.2.0, ORM: 4.32.6] )
 
 ```
-select-attribute /org/bluez/hci0/dev_XX_XX_XX_XX_XX_XX/service0050/char0051
-attribute-info (You get attribute information)
-notify on
+npm install -g sequelize-cli
+``` 
+- For running tests (./test):
+
+```
+npm test
+```
+<br />
+
+### Database information (./config/config.json):
+- Migrations (./migrations)
+```
+npm run migrate
+```
+- Seeders (./seeders)
+```
+npm run seed
 ```
 
-And then you will get the data...
+- Removing all tables from db:
+```
+npm run drop
+```
+
+ **Description:**
+```
+ {
+     "username": "inovatink",
+    "password": "inovatink",
+    "database": "ws_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+```
+- Note: mySQL db  is needed for starting backend
+
+<br />
+
+Initialization of database with default seeders and start of the app:
+```
+npm run restartdb
+```
+<br />
+
+With starting of backend Socket (docs) [a link](https://socket.io/docs/)
+is initialized.
+t is used for realtime control of python scripts.
+
+
+**Project description**
+
+Application collects data from wearable sensor in JSON format. Collection of data is done using bluetooth. Python scripts which are stored in ** ./src/scripts/python ** are used for connecting device to the application and disconnecting device (application is tested on Raspberrry PI3 and w10 enviroments where scripts are used and developed just for RPI3).
+
+#### Additional requirements
+# Node: v8.10.0
+# npm: v6.4.1
+
