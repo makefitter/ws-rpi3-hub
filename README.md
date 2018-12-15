@@ -62,6 +62,15 @@ is initialized.It is used for realtime control of python scripts.
 Backend: **./src/scripts/eventBroadcaster.js**
 Frontend: **./client/services/socket.service.ts**
 
+<br />
+
+In  **./config** we have:
+ - config.json (database details)
+ - middleware.js ( related packages and inits used in backend)
+ - passport.js (defined auth strategies)
+ - passportConfig.js ( defined secret key)
+ - pyConfing.js (configuration related for python Shell)
+
 **Project description**
 
 Application collects data from wearable sensor in JSON format. Collection of data is done using bluetooth. Python scripts which are stored in **./src/scripts/python** are used for connecting device to the application and disconnecting device (application is tested on Raspberrry PI3 and w10 enviroments where scripts are used and developed just for RPI3). User authentication is done using PassportJS and token authorization. 
