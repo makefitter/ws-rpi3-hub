@@ -1,6 +1,4 @@
-# NodeJS-blog-example
-## **Note: Frontend - Still in progress...**
-##  **NodeJS + Express + Sequelize + PassportJS + Mocha + Chai + Bcrypt + ESlint + Babel**
+# Raspberry PI 3 HUB for wearable sensors
 <br />
 
 ### Project Setup:
@@ -17,13 +15,6 @@
 ```
 npm install -g sequelize-cli
 ``` 
-- For running tests (./test):
-
-```
-npm test
-```
-<br />
-
 ### Database information (./config/config.json):
 - Migrations (./migrations)
 ```
@@ -49,7 +40,7 @@ npm run drop
     "dialect": "mysql"
   }
 ```
-- Note: mySQL db  is needed for starting backend
+- Note: mySQL db  is needed for starting backend ([detailed setup](https://raspberry-projects.com/pi/software_utilities/web-servers/mysql))
 
 <br />
 
@@ -59,16 +50,24 @@ npm run restartdb
 ```
 <br />
 
-With starting of backend Socket (docs) [a link](https://socket.io/docs/)
-is initialized.
-t is used for realtime control of python scripts.
+- For running tests (./test):
 
+```
+npm test
+```
+<br />
+
+With starting of backend Socket ([docs](https://socket.io/docs/))
+is initialized.It is used for realtime control of python scripts.
+Backend: **./src/scripts/eventBroadcaster.js**
+Frontend: **./client/services/socket.service.ts**
 
 **Project description**
 
-Application collects data from wearable sensor in JSON format. Collection of data is done using bluetooth. Python scripts which are stored in ** ./src/scripts/python ** are used for connecting device to the application and disconnecting device (application is tested on Raspberrry PI3 and w10 enviroments where scripts are used and developed just for RPI3).
+Application collects data from wearable sensor in JSON format. Collection of data is done using bluetooth. Python scripts which are stored in **./src/scripts/python** are used for connecting device to the application and disconnecting device (application is tested on Raspberrry PI3 and w10 enviroments where scripts are used and developed just for RPI3). User authentication is done using PassportJS and token authorization. 
+On frontend we are using Typescript and Webpack. Frontend is ready for production with `npm run build-prod`.
 
-#### Additional requirements
-# Node: v8.10.0
-# npm: v6.4.1
+**Additional requirements:**
+ - Node: v8.10.0
+ - npm: v6.4.1
 
