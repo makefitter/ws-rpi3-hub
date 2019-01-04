@@ -10,7 +10,6 @@ import os from 'os';
 const PORT = process.env.PORT || 3000;
 rootRequireDef(); //initializing function
 
-console.log('Process: ', os.platform());
 if(os.platform() === 'linux'){
     delete pyConfig.pythonPath;
 }

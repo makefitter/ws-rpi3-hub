@@ -23,9 +23,7 @@ import { AuthService } from './services/authentication.service';
 
 import './app.less';
 
-
-
-export let app = module('app', 
+export let app = module('app',
     [
     'ui.router',
     'angular-jwt'
@@ -63,7 +61,6 @@ export let app = module('app',
                 name: 'app.register',
                 component: RegisterComponent.NAME,
             });
-    
         $urlRouterProvider.otherwise('/');
     }])
     .service(SocketService.NAME, SocketService)
@@ -79,10 +76,10 @@ export let app = module('app',
     .component(DataComponent.NAME, new DataComponent())
     .service(DataService.NAME, DataService)
 
-    .component(LoginComponent.NAME, new LoginComponent()) 
-    
+    .component(LoginComponent.NAME, new LoginComponent())
+
     .component(RegisterComponent.NAME, new RegisterComponent())
-    
+
     .service(AuthService.NAME, AuthService);
 
 element(document).ready( () => {

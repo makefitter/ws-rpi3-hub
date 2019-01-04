@@ -11,12 +11,8 @@ export class SocketService {
         this.socket.emit('toBackEnd', message);
     }
 
-    // public onMessage(cb: any): void {
-    //     this.socket.on('message', cb);
-    // }
-
-    public onEvent(event: Event):void{
-            this.socket.on(event, () =>{
+    public onEvent(event: Event):void {
+            this.socket.on(event, () => {
                 console.log(event);
             });
     }

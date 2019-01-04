@@ -1,6 +1,4 @@
-import {
-  SocketService
-} from "../services/socket.service";
+import { SocketService } from '../services/socket.service';
 
 export class DataService {
   static $inject = ['$http', 'socketService'];

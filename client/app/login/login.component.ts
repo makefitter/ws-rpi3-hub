@@ -1,20 +1,21 @@
 import { AuthService } from '../services/authentication.service';
 
-class userLogin {
+class UserLogin {
     public email: string;
     public password: string;
 }
 interface IMyScope extends ng.IScope {
-    user: userLogin;
+    user: UserLogin;
     error: string;
     isError: boolean;
 }
 class LoginController implements ng.IController {
-    
+
     static $inject = ['$scope','$window','$state','$http','authService'];
     title: string = 'hello ng';
-    public user: userLogin;
-    constructor(private $scope: IMyScope, 
+    private api = 'api';
+    public user: UserLogin;
+    constructor(private $scope: IMyScope,
                 private $window: ng.IWindowService,
                 private $state: ng.ui.IStateService,
                 private $http: ng.IHttpService,
@@ -22,8 +23,8 @@ class LoginController implements ng.IController {
                 ) {
                     this.$scope.isError = false;
     }
-    public submit(){
-        this.$http.post(this.$window.localStorage['api'] + 'login',
+    public submit(): void {
+        this.$http.post(this.$window.localStorage[this.api] + 'login',
         {
             email: this.$scope.user.email,
             password: this.$scope.user.password
@@ -33,7 +34,7 @@ class LoginController implements ng.IController {
               'Content-Type': 'application/json'
             }
           }).then((data: any) => {
-            if (data.status == 200) { 
+            if (data.status === 200) {
                 this.authService.setToken(data.data.token);
                 this.$state.go('app.home');
             }

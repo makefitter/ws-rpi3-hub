@@ -2,16 +2,15 @@ import  { UserService } from '../services/user.service';
 interface IMyScope extends ng.IScope {
     data: string;
     message: any;
-    user:any
+    user:any;
 }
 
 class RegisterController implements ng.IController {
-    
+
     static $inject = ['$scope','$state','userService'];
     title: string = 'hello ng';
     constructor(private $scope: IMyScope, private $state: ng.ui.IStateService,private userService: UserService) {
         this.$scope.message = false;
-    
     }
 
     public submit(): void {

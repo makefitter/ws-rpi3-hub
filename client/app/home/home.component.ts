@@ -1,10 +1,10 @@
 
 class HomeController implements ng.IController {
-    
+
     static $inject = [];
     welcome: string = 'hello ng';
     users: any;
-    constructor(){}
+    constructor() {/**/}
 }
 
 export class HomeComponent implements ng.IComponentOptions {

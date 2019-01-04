@@ -1,6 +1,6 @@
 import pyConfig from '../../../config/pyConfig';
 import { PythonShell } from 'python-shell';
-
+import os from 'os';
 module.exports = (req, res) => {
 
     const io = req.app.get('io');
@@ -8,7 +8,16 @@ module.exports = (req, res) => {
 
     try {
         pyConfig.args = [req.body.name];
-        PythonShell.run('writeToConsole.py', pyConfig, function (err) {
+        let script='';
+
+        if(os.platform() === 'win32'){
+            script = 'connectTest.py';
+        }
+        else if(os.platform() === 'linux'){
+            script = 'connect.py';
+        }
+        
+        PythonShell.run(script, pyConfig, function (err) {
                 if (err) {
                     console.log(JSON.stringify(err));
                     throw err;

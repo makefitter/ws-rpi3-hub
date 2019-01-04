@@ -1,10 +1,5 @@
-// import { DataService } from "./data.service";
-import {
-    SocketService
-} from "../services/socket.service";
-import {
-    DataService
-} from "./data.service";
+import { SocketService } from '../services/socket.service';
+import { DataService } from './data.service';
 
 class Coord {
 
@@ -12,7 +7,7 @@ class Coord {
         if (!w) {
             w = 0;
         }
-    };
+    }
 }
 interface IMyScope extends ng.IScope {
     data: string;
@@ -29,7 +24,7 @@ class DataController implements ng.IController {
     public gyro: Coord;
     public quat: Coord;
 
-    constructor(protected dataService: DataService, public socketService: SocketService, 
+    constructor(protected dataService: DataService, public socketService: SocketService,
                 private $scope: IMyScope,private $timeout: ng.ITimeoutService,
                 private $state: ng.ui.IStateService) {
 
@@ -38,22 +33,15 @@ class DataController implements ng.IController {
         this.quat = new Coord(1, 2, 3, 4);
     }
 
-    // public startData(): void {
-    //     this.dataService.getData().then((data) => {
-    //         this.status = data.data.message;
-    //     });
-    // }
-
     public connectWs(): void {
         let fileName = this.dataService.getFileName();
         this.dataService.connectWs(fileName).then((data) => {
-            if (data.status == 200) {
-     
+            if (data.status === 200) {
+
                 this.socketService.get().on('message', (data) => {
-                    console.log('data: ', data);
                     this.$scope.$apply(() => {
                         console.log('Data is collected!!!');
-                        if(!this.isConnected){
+                        if(!this.isConnected) {
                             this.status = 'Data is collected';
                         }
                         this.isConnected = true;
@@ -80,17 +68,16 @@ class DataController implements ng.IController {
                     });
                 });
             }
-        })
+        });
     }
     public disconnectWs(): void {
         this.dataService.disconnectWs().then((data) => {
             console.log('disconnected:', data);
 
-            if (data.status == 200) {
-                this.status = data.data.message;
+            if (data.status === 200) {
                 this.socketService.get().on('disconnect_message', (data) => {
                     console.log('disconnected_data:', data);
-                    this.status = data.message; 
+                    this.status = data.message;
                 });
             }
         });

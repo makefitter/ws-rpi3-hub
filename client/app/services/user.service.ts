@@ -3,12 +3,12 @@ import{ AuthService } from './authentication.service';
 export class UserService {
   static $inject = ['$q', '$http', '$window','authService'];
   static NAME: string = 'userService';
-  private host: string = '';
+  private api: string = 'api';
   constructor(protected $q: ng.IQService, protected $http: ng.IHttpService, private $window: ng.IWindowService, private authService: AuthService) {
-    this.host = this.$window.localStorage['api'];
+
   }
-  getUser() {
-    return this.$http.get((this.$window.localStorage['api'] + 'user/' + this.authService.tokenPayload().id), {
+  public getUser(): ng.IHttpPromise<any> {
+    return this.$http.get((this.$window.localStorage[this.api] + 'user/' + this.authService.tokenPayload().id), {
         headers: this.authService.getHeaders()
       }).then((response) => {
         return response;
@@ -17,9 +17,8 @@ export class UserService {
         return err;
       });
   }
-  update(user) {
-
-    return this.$http.put((this.$window.localStorage['api'] + 'user/' + this.authService.tokenPayload().id), user, {
+  public update(user): ng.IHttpPromise<any> {
+    return this.$http.put((this.$window.localStorage[this.api] + 'user/' + this.authService.tokenPayload().id), user, {
         headers: this.authService.getHeaders()
       })
       .then((response) => {
@@ -29,8 +28,9 @@ export class UserService {
         return err;
       });
   }
-  create(user) {
-    return this.$http.post((this.$window.localStorage['api'] + 'user/'), user, {
+  public create(user): ng.IHttpPromise<any> {
+
+    return this.$http.post((this.$window.localStorage[this.api] + 'user/'), user, {
         headers: {
           'Content-Type': 'application/json'
         }
