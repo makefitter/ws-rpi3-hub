@@ -6,7 +6,7 @@
 # In[1]:
 
 import sys
-from pathlib import path
+from pathlib import Path
 import json
 import numpy as np
 import pandas as pd
