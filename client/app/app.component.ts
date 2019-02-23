@@ -11,7 +11,6 @@ class AppController implements ng.IController {
                 private $window: ng.IWindowService,
                 private $scope: IMyScope) {
         this.$window.localStorage[('api').toString()] = apiPath;
-        this.$window.localStorage[('api').toString()] = '';
         this.$scope.state  = this.$state;
         this.$state.go('app.login');
     }
