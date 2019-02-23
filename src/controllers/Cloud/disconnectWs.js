@@ -11,10 +11,10 @@ module.exports = (req, res) => {
         let script = '';
 
         if(os.platform() === 'win32'){
-            script = 'connectTest.py';
+            script = 'disconnectTest.py';
         }
         else if(os.platform() === 'linux'){
-            script = 'connect.py';
+            script = 'disconnectPI.py';
         }
         
         PythonShell.run(script, pyConfig, function (err) {
