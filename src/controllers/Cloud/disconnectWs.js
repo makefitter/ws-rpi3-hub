@@ -35,7 +35,7 @@ module.exports = (req, res) => {
             })
             .end(function (err, code, signal) {
                 if (err) throw err;
-                io.emit('scriptFinished', null);
+                io.emit('scriptFinished_disconnect', null);
                 console.warn('The exit code was: ' + code + '. The exit signal was: ' + signal + '.');
             });
     } catch (err) {

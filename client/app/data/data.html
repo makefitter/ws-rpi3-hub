@@ -6,6 +6,8 @@
         -->
         <button type="button" class="btn btn-success" ng-click=$ctrl.connectWs()>connectWs</button>
         <button ng-if=$ctrl.isConnected type="button" class="btn btn-warning" ng-click=$ctrl.disconnectWs()>disconnectWs</button>
+        <button ng-if=$ctrl.isDisconnected type="button" class="btn btn-succes" ng-click=$ctrl.calcAttr()>calculate</button>
+       
         <div class="row-fluid">
             <div class="centering text-center">
                 <h2 class="display-4">Incoming data:</h2>

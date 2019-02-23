@@ -23,6 +23,9 @@ private fileName: string;
   public disconnectWs(): angular.IHttpPromise < any > {
     return this.$http.get(('http://localhost:5000/api/cloud/'), {});
   }
+  public calcAttr(): angular.IHttpPromise < any > {
+    return this.$http.get(('http://localhost:5000/api/attributes/'), {});
+  }
   public setFileName(name: string): void {
     this.fileName = name;
   }

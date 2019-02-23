@@ -15,18 +15,20 @@ interface IMyScope extends ng.IScope {
 
 class DataController implements ng.IController {
     static i = 0;
-    static $inject = ['dataService', 'socketService', '$scope','$timeout','$state'];
+    static $inject = ['dataService', 'socketService', '$scope','$timeout','$state','$window'];
     //  private $scope : ng.IScope;
     welcome: string = 'hello';
     public status: string = null;
     public isConnected: boolean = false;
+    public isDisconnected: boolean = false;
     public acc: Coord;
     public gyro: Coord;
     public quat: Coord;
 
     constructor(protected dataService: DataService, public socketService: SocketService,
                 private $scope: IMyScope,private $timeout: ng.ITimeoutService,
-                private $state: ng.ui.IStateService) {
+                private $state: ng.ui.IStateService,
+                private $window: ng.IWindowService) {
 
         this.acc = new Coord(1, 3.3, 4.4);
         this.gyro = new Coord(28, 31, 2);
@@ -78,7 +80,25 @@ class DataController implements ng.IController {
                 this.socketService.get().on('disconnect_message', (data) => {
                     console.log('disconnected_data:', data);
                     this.status = data.message;
+
+                    this.socketService.get().on('scriptFinished_disconnect', () => {
+                        this.$scope.$apply(() => {
+                            console.log('ScriptFinished_disconnect!!!');
+                            this.status = 'Script finished';
+                            this.isDisconnected = true;
+
+                        });
+                    });
                 });
+            }
+        });
+    }
+    public calcAttr(): void {
+        this.dataService.calcAttr().then((data) => {
+            console.log('calcAttr:', data);
+
+            if (data.status === 200) {
+                this.$window.location.href = 'http://localhost:5000';
             }
         });
     }
