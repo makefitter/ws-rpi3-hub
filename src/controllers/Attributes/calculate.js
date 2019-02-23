@@ -32,7 +32,11 @@ module.exports = (req, res) => {
             response.message = 'Script finished';
             res.status(200).json(response);
             console.warn('The exit code was: ' + code + '. The exit signal was: ' + signal + '.');
-        });
+        })
+        .on('message', function (message) {
+           console.log(message); 
+        })
+        
     } catch (err) {
         response.message = 'Script not started';
         response.err = JSON.stringify(err);
